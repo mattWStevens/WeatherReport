@@ -12,16 +12,15 @@ def to_fahrenheit(temp):
 
 # This function checks the weather conditions and determines if it is good
 # snowboarding weather.
-def snowboarding(temp, condition, snow, cloud_cover):
+def snowboarding(temp, snow, cloud_cover):
 	answer = True
 	desired_snow = ["snow", "heavy snow", "heaver shower snow"]
-	desired_conditions = ["clear sky", "few clouds", "scattered clouds"]
 
 	if snow not in desired_snow:
 		answer = False
 	if temp < 20 or temp > 45:
 		answer = False
-	if condition not in desired_conditions:
+	if cloud_cover > 60:
 		answer = False
 
 	return answer
