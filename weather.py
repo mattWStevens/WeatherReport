@@ -58,3 +58,22 @@ def good_weather(temp, condition, humidity, cloud_cover):
 		answer = False
 
 	return answer
+
+# This function generates a list of suggested activites based on the weather
+# conditions.
+def suggested_activities(temp, condition, humidity):
+	poss_activities = []
+
+	if temp > 80 and humidity < 75 and "rain" not in condition.lower():
+		poss_activities.append("relaxing")
+	if "rain" in condition.lower() or temp < 50:
+		poss_activities.append("video games")
+		poss_activities.append("movies")
+	if temp >= 60 and temp <= 75 and humidity <= 70:
+		poss_activities.append("biking")
+		poss_activities.append("hiking")
+	else:
+		poss_activiites.append("No Suggestions")
+
+	return poss_activities
+		
