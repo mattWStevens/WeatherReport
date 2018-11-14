@@ -5,7 +5,6 @@
 This is a class representing a neatly formatted
 message to be used for the body of an email.
 """
-
 class EmailMessage:
 	sent_from = ""
 	to = ""
