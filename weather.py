@@ -35,7 +35,7 @@ def golfing(temp, condition, cloud_cover, humidity):
 		answer = False
 	if humidity > 75:
 		answer = False
-	if condition not in desired conditions:
+	if condition not in desired_conditions:
 		answer = False
 	if cloud_cover > 50:
 		answer = False
@@ -66,14 +66,14 @@ def suggested_activities(temp, condition, humidity):
 
 	if temp > 80 and humidity < 75 and "rain" not in condition.lower():
 		poss_activities.append("relaxing")
-	if "rain" in condition.lower() or temp < 50:
+	elif "rain" in condition.lower() or temp < 50:
 		poss_activities.append("video games")
 		poss_activities.append("movies")
-	if temp >= 60 and temp <= 75 and humidity <= 70:
+	elif temp >= 60 and temp <= 75 and humidity <= 70:
 		poss_activities.append("biking")
 		poss_activities.append("hiking")
 	else:
-		poss_activiites.append("No Suggestions")
+		poss_activities.append("No Suggestions")
 
 	return poss_activities
 		
