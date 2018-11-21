@@ -56,6 +56,6 @@ class EmailBody:
 		highs_lows = "Todays high will be {} F and the low will be {} F".format(self.high, self.low)
 		hum = "The humidity is {}".format(self.humidity)
 
-		body += initial_message += highs_lows + hum + "\n\n"
+		body += initial_message + highs_lows + hum + "\n\n"
 		body += self.activities_message + "\n\n"
 		body += "-your friendly Python program"
