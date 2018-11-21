@@ -54,7 +54,7 @@ class EmailBody:
 		# add some numerical information regarding weather to beginning of body
 		initial_message = f"It is currently {self.current_temp} degrees Fahrenheit."
 		highs_lows = f" Today's high will be {self.high} and the low will be {self.low}."
-		hum = f" There will be {self.humidity}% humidity."
+		hum = f" There will be {self.humidity} % humidity."
 
 		body += initial_message + highs_lows + hum + "\n\n"
 		body += self.activities_message + "\n\n"
