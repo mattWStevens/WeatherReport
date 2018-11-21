@@ -59,3 +59,5 @@ class EmailBody:
 		body += initial_message + highs_lows + hum + "\n\n"
 		body += self.activities_message + "\n\n"
 		body += "-your friendly Python program"
+
+		return body
