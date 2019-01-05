@@ -8,24 +8,13 @@ from email.message import EmailMessage
 from message import EmailMessage as em
 import config
 import sys
+from message import EmailBody
 
 """
 This program utilizes an HTTP get request to access the API of OpenWeatherMap
 in order to generate a daily email report of the weather and suggested activities
 based upon this weather.
 """
-
-# preps the body of the email message to be sent to EmailMessage object
-def prep_body(body):
-	message_body = ""
-
-	for line in body:
-		message_body += line + "\n\n"
-
-	message_body += "-your friendly python program"
-
-	return message_body
-
 recipient = sys.argv[1]
 
 # make HTTP request and convert response to json
@@ -50,6 +39,7 @@ weather_status = ""
 
 # check activities based on weather
 if "snow" in condition.lower():
+	snow = r["weather"][0]["main"]
 	snowboard = snowboarding(temp, snow, cloud_cover)
 	message = "Today would be a perfect day for snowboarding!" if snowboard else ""
 
@@ -71,13 +61,17 @@ for act in poss_activities:
 # build email with components for body that have been gathered
 first_line = message
 
-body = []
-body.append(first_line)
-body.append(weather_status)
-body.append(activities_message)
+# gather other pertinent information
+current_temp = temp
+high = r["main"]["temp_min"]
+high = to_fahrenheit(high)
+low = r["main"]["temp_max"]
+low = to_fahrenheit(low)
+
+e_body = EmailBody(first_line, weather_status, activities_message, current_temp, high, low, humidity)
 
 # get message body ready
-body = prep_body(body)
+body = e_body.make_body()
 
 email = em(config.EMAIL_ADDRESS, recipient, "Your Weather Report", body)
 msg = email.to_string()
