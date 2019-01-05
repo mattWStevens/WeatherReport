@@ -63,10 +63,12 @@ first_line = message
 
 # gather other pertinent information
 current_temp = temp
-high = r["main"]["temp_min"]
+high = r["main"]["temp_max"]
 high = to_fahrenheit(high)
-low = r["main"]["temp_max"]
+high = round(high, 2)
+low = r["main"]["temp_min"]
 low = to_fahrenheit(low)
+low = round(low, 2)
 
 e_body = EmailBody(first_line, weather_status, activities_message, current_temp, high, low, humidity)
 
